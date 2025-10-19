@@ -1,31 +1,32 @@
-# Sanal ortam
+# --- Sanal ortam klasörleri ---
 venv/
 .venv/
 
-# Python cache
+# --- Python cache dosyaları ---
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.egg-info/
 
-# Model dosyaları (büyük)
-*.h5
-*.joblib
-*.pkl
-*.sav
-
-# IDE klasörleri
+# --- IDE klasörleri ---
 .vscode/
 .idea/
 
-# Geçici dosyalar
+# --- Geçici dosyalar ---
 .DS_Store
 *.log
 *.tmp
 .ipynb_checkpoints
 
-# Veri dosyaları (isteğe bağlı)
+# --- Veri dosyaları (isteğe bağlı) ---
 *.csv
 *.xlsx
 data/
+
+# --- Büyük model dosyaları hariç ---
+# Eğer model dosyalarının yüklenmesini istiyorsan bunları YORUM satırı yap:
+# *.h5
+# *.joblib
+# *.pkl
+# *.sav
