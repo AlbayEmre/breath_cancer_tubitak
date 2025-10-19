@@ -26,7 +26,7 @@ data/
 
 # --- Büyük model dosyaları hariç ---
 # Eğer model dosyalarının yüklenmesini istiyorsan bunları YORUM satırı yap:
-# *.h5
-# *.joblib
-# *.pkl
-# *.sav
+*.h5
+*.joblib
+*.pkl
+*.sav
