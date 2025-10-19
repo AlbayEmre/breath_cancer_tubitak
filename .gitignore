@@ -1,0 +1,31 @@
+# Sanal ortam
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Model dosyaları (büyük)
+*.h5
+*.joblib
+*.pkl
+*.sav
+
+# IDE klasörleri
+.vscode/
+.idea/
+
+# Geçici dosyalar
+.DS_Store
+*.log
+*.tmp
+.ipynb_checkpoints
+
+# Veri dosyaları (isteğe bağlı)
+*.csv
+*.xlsx
+data/

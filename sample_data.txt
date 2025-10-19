@@ -1,0 +1,34 @@
+# Örnek 6 hasta verisi (15 önemli özellik)
+sample_data = [
+    # Tümörlü (M)
+    {"area_worst": 1000, "concave points_worst": 0.12, "concave points_mean": 0.10,
+     "radius_worst": 18, "perimeter_worst": 115, "perimeter_mean": 85, "concavity_mean": 0.15,
+     "area_mean": 500, "concavity_worst": 0.20, "radius_mean": 14, "area_se": 40,
+     "compactness_worst": 0.25, "texture_worst": 25, "texture_mean": 20, "radius_se": 0.5},
+
+    {"area_worst": 1200, "concave points_worst": 0.15, "concave points_mean": 0.12,
+     "radius_worst": 20, "perimeter_worst": 130, "perimeter_mean": 90, "concavity_mean": 0.18,
+     "area_mean": 600, "concavity_worst": 0.22, "radius_mean": 16, "area_se": 50,
+     "compactness_worst": 0.30, "texture_worst": 30, "texture_mean": 22, "radius_se": 0.6},
+
+    {"area_worst": 900, "concave points_worst": 0.11, "concave points_mean": 0.09,
+     "radius_worst": 17, "perimeter_worst": 110, "perimeter_mean": 80, "concavity_mean": 0.14,
+     "area_mean": 450, "concavity_worst": 0.19, "radius_mean": 13, "area_se": 38,
+     "compactness_worst": 0.22, "texture_worst": 24, "texture_mean": 19, "radius_se": 0.45},
+
+    # Sağlıklı (B)
+    {"area_worst": 800, "concave points_worst": 0.05, "concave points_mean": 0.04,
+     "radius_worst": 15, "perimeter_worst": 95, "perimeter_mean": 70, "concavity_mean": 0.05,
+     "area_mean": 300, "concavity_worst": 0.08, "radius_mean": 12, "area_se": 25,
+     "compactness_worst": 0.12, "texture_worst": 20, "texture_mean": 18, "radius_se": 0.4},
+
+    {"area_worst": 700, "concave points_worst": 0.03, "concave points_mean": 0.02,
+     "radius_worst": 14, "perimeter_worst": 90, "perimeter_mean": 65, "concavity_mean": 0.03,
+     "area_mean": 280, "concavity_worst": 0.06, "radius_mean": 11, "area_se": 22,
+     "compactness_worst": 0.10, "texture_worst": 18, "texture_mean": 17, "radius_se": 0.35},
+
+    {"area_worst": 850, "concave points_worst": 0.06, "concave points_mean": 0.05,
+     "radius_worst": 16, "perimeter_worst": 100, "perimeter_mean": 75, "concavity_mean": 0.06,
+     "area_mean": 320, "concavity_worst": 0.09, "radius_mean": 12.5, "area_se": 28,
+     "compactness_worst": 0.13, "texture_worst": 21, "texture_mean": 18, "radius_se": 0.42}
+]
