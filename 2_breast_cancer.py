@@ -10,8 +10,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score
-import tensorflow as tf
-from tensorflow import keras
+# import tensorflow as tf
+# from tensorflow import keras
 from joblib import dump, load
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
@@ -61,15 +61,15 @@ rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_model.fit(X_train_scaled, y_train)
 
 # 4) ANN
-ann_model = keras.Sequential([
-    keras.layers.Dense(16, activation='relu', input_shape=(X_train_scaled.shape[1],)),
-    keras.layers.Dropout(0.2),
-    keras.layers.Dense(8, activation='relu'),
-    keras.layers.Dense(1, activation='sigmoid')
-])
-ann_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-ann_model.fit(X_train_scaled, y_train, epochs=50, batch_size=16, verbose=0,
-              validation_data=(X_test_scaled, y_test))
+# ann_model = keras.Sequential([
+#     keras.layers.Dense(16, activation='relu', input_shape=(X_train_scaled.shape[1],)),
+#     keras.layers.Dropout(0.2),
+#     keras.layers.Dense(8, activation='relu'),
+#     keras.layers.Dense(1, activation='sigmoid')
+# ])
+# ann_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# ann_model.fit(X_train_scaled, y_train, epochs=50, batch_size=16, verbose=0,
+#               validation_data=(X_test_scaled, y_test))
 
 # ==========================
 # Test setinde performans
@@ -77,8 +77,7 @@ ann_model.fit(X_train_scaled, y_train, epochs=50, batch_size=16, verbose=0,
 models = {
     "Lojistik Regresyon": log_reg,
     "SVM": svm_model,
-    "Random Forest": rf_model,
-    "ANN": ann_model
+    "Random Forest": rf_model
 }
 
 print("\n--- Test Seti Sonuçları ---")
@@ -130,7 +129,7 @@ os.makedirs(model_dir, exist_ok=True)
 dump(log_reg, os.path.join(model_dir, "logistic_regression2.joblib"))
 dump(svm_model, os.path.join(model_dir, "svm_rbf2.joblib"))
 dump(rf_model, os.path.join(model_dir, "random_forest2.joblib"))
-ann_model.save(os.path.join(model_dir, "ann_model2.h5"))
+# ann_model.save(os.path.join(model_dir, "ann_model2.h5"))
 
 # Scaler
 dump(scaler, os.path.join(model_dir, "scaler_standard2.joblib"))

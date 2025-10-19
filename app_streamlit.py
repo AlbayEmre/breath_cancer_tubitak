@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 import numpy as np
 import streamlit as st
-from tensorflow import keras
+
 from joblib import load
 
 # =======================
@@ -77,15 +77,15 @@ STEP = {
 #  MODEL & SCALER YÜKLEME
 # =======================
 @st.cache_resource(show_spinner=True)
-def load_model_and_scaler(model_dir: Path):
+def load_rf_model_and_scaler(model_dir: Path):
     """
     Model ve scaler'ı yükler, cache'ler.
     Dizin yapısı:
         saved_models2/
-            ann_model2.h5
+            random_forest2.joblib
             scaler_standard2.joblib
     """
-    model_path = model_dir / "ann_model2.h5"
+    model_path = model_dir / "random_forest2.joblib"
     scaler_path = model_dir / "scaler_standard2.joblib"
 
     if not model_path.exists() or not scaler_path.exists():
@@ -96,9 +96,9 @@ def load_model_and_scaler(model_dir: Path):
         }
 
     try:
-        ann_model = keras.models.load_model(str(model_path))
+        rf_model = load(str(model_path))
         scaler = load(str(scaler_path))
-        return ann_model, scaler, {"exists": True}
+        return rf_model, scaler, {"exists": True}
     except Exception as e:
         return None, None, {"exists": False, "error": str(e)}
 
@@ -106,7 +106,7 @@ def load_model_and_scaler(model_dir: Path):
 CWD = Path(os.getcwd())
 MODEL_DIR = CWD / "saved_models2"
 
-ann_model, scaler, load_info = load_model_and_scaler(MODEL_DIR)
+rf_model, scaler, load_info = load_rf_model_and_scaler(MODEL_DIR)
 
 # =======================
 #  KENAR ÇUBUĞU (TÜBİTAK)
@@ -120,8 +120,8 @@ with st.sidebar:
     with st.expander("Kullanılan Model ve Teknolojiler", expanded=False):
         st.markdown(
             """
-            - **Model:** Yapay Sinir Ağı (ANN)  
-            - **Kütüphaneler:** TensorFlow/Keras, NumPy, Joblib  
+            - **Model:** Random Forest  
+            - **Kütüphaneler:** Scikit-learn, NumPy, Joblib  
             - **Arayüz:** Streamlit  
             - **Ölçekleme:** Standard Scaler (eğitimle aynı olmalı)
             """
@@ -144,16 +144,16 @@ st.title(APP_TITLE)
 st.markdown(APP_SUBTITLE)
 
 # Model / scaler bulunamadıysa net uyarı
-if not load_info.get("exists", False) or ann_model is None or scaler is None:
+if not load_info.get("exists", False) or rf_model is None or scaler is None:
     st.error("Model veya scaler yüklenemedi. Lütfen aşağıdaki yolları kontrol edin ve dosyaların mevcut olduğundan emin olun.")
     with st.expander("Kurulum Kontrol Listesi", expanded=True):
         st.markdown(
             f"""
             - Model dizini: `{MODEL_DIR}`  
-            - Beklenen model: `{MODEL_DIR / 'ann_model2.h5'}`  
+            - Beklenen model: `{MODEL_DIR / 'random_forest2.joblib'}`  
             - Beklenen scaler: `{MODEL_DIR / 'scaler_standard2.joblib'}`  
             - Dosya adları eğitim sırasında kaydedilenlerle **birebir aynı** olmalı.  
-            - Python ortamında `tensorflow`, `joblib`, `streamlit`, `numpy` paketleri kurulu olmalı.
+            - Python ortamında `scikit-learn`, `joblib`, `streamlit`, `numpy` paketleri kurulu olmalı.
             """
         )
 else:
@@ -211,7 +211,7 @@ else:
             Xs = scaler.transform(X)
 
             # 3) Tahmin
-            proba = float(ann_model.predict(Xs, verbose=0)[0][0])
+            proba = float(rf_model.predict_proba(Xs)[0][1])
             pred = 1 if proba >= threshold else 0
 
             # 4) Sonuç Sunumu (baskı/PDF için uygun)

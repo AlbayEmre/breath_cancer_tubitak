@@ -61,8 +61,8 @@ from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score, classification_report, confusion_matrix
 from sklearn.model_selection import cross_val_score
-import tensorflow as tf
-from tensorflow import keras
+# import tensorflow as tf
+# from tensorflow import keras
 import numpy as np
 
 # Kaydedilmiş ölçekli verileri yükle (ya da yukarıda tanımladıklarını kullan)
@@ -101,21 +101,21 @@ print("ROC-AUC:", roc_auc_score(y_test, rf_model.predict_proba(X_test)[:,1]))
 # ----------------------------
 # 4) Basit ANN (Keras)
 # ----------------------------
-ann_model = keras.Sequential([
-    keras.layers.Dense(16, activation='relu', input_shape=(X_train.shape[1],)),
-    keras.layers.Dropout(0.2),
-    keras.layers.Dense(8, activation='relu'),
-    keras.layers.Dense(1, activation='sigmoid')
-])
-
-ann_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-ann_model.fit(X_train, y_train, epochs=50, batch_size=16, verbose=0,
-              validation_data=(X_test, y_test))
-
-ann_eval = ann_model.evaluate(X_test, y_test, verbose=0)
-print("\nANN Test Loss, Accuracy:", ann_eval)
-y_pred_ann = (ann_model.predict(X_test) > 0.5).astype(int)
-print("ANN ROC-AUC:", roc_auc_score(y_test, ann_model.predict(X_test)))
+# ann_model = keras.Sequential([
+#     keras.layers.Dense(16, activation='relu', input_shape=(X_train.shape[1],)),
+#     keras.layers.Dropout(0.2),
+#     keras.layers.Dense(8, activation='relu'),
+#     keras.layers.Dense(1, activation='sigmoid')
+# ])
+#
+# ann_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# ann_model.fit(X_train, y_train, epochs=50, batch_size=16, verbose=0,
+#               validation_data=(X_test, y_test))
+#
+# ann_eval = ann_model.evaluate(X_test, y_test, verbose=0)
+# print("\nANN Test Loss, Accuracy:", ann_eval)
+# y_pred_ann = (ann_model.predict(X_test) > 0.5).astype(int)
+# print("ANN ROC-AUC:", roc_auc_score(y_test, ann_model.predict(X_test)))
 
 # ----------------------------
 # Çapraz doğrulama örneği (lojistik için)
@@ -144,7 +144,7 @@ plot_roc(y_test, svm_model.predict_proba(X_test)[:,1], 'SVM')
 plot_roc(y_test, rf_model.predict_proba(X_test)[:,1], 'Random Forest')
 
 # 4) ANN
-plot_roc(y_test, ann_model.predict(X_test).ravel(), 'ANN')
+# plot_roc(y_test, ann_model.predict(X_test).ravel(), 'ANN')
 
 # Rastgele tahmin referansı
 plt.plot([0, 1], [0, 1], color='navy', lw=1, linestyle='--')
@@ -177,7 +177,7 @@ dump(svm_model, os.path.join(model_dir, "svm_rbf.joblib"))
 dump(rf_model, os.path.join(model_dir, "random_forest.joblib"))
 
 # ANN (Keras modeli)
-ann_model.save(os.path.join(model_dir, "ann_model.h5"))
+# ann_model.save(os.path.join(model_dir, "ann_model.h5"))
 
 print("Tüm modeller kaydedildi:", model_dir)
 

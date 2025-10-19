@@ -6,8 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import cross_val_score
 from joblib import load
-import tensorflow as tf
-from tensorflow import keras
+# import tensorflow as tf
+# from tensorflow import keras
 
 # ==========================
 # Veri seti
@@ -46,7 +46,7 @@ X_test_scaled = scaler.transform(X_test)
 log_reg = load(os.path.join(model_dir, "logistic_regression2.joblib"))
 svm_model = load(os.path.join(model_dir, "svm_rbf2.joblib"))
 rf_model = load(os.path.join(model_dir, "random_forest2.joblib"))
-ann_model = keras.models.load_model(os.path.join(model_dir, "ann_model2.h5"))
+# ann_model = keras.models.load_model(os.path.join(model_dir, "ann_model2.h5"))
 
 # ==========================
 # Test seti üzerinde performans
@@ -54,8 +54,7 @@ ann_model = keras.models.load_model(os.path.join(model_dir, "ann_model2.h5"))
 models = {
     "Lojistik Regresyon": log_reg,
     "SVM": svm_model,
-    "Random Forest": rf_model,
-    "ANN": ann_model
+    "Random Forest": rf_model
 }
 
 print("\n--- Test Seti Sonuçları ---")
