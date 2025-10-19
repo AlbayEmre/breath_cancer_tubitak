@@ -81,7 +81,7 @@ def load_rf_model_and_scaler(model_dir: Path):
     """
     Model ve scaler'ı yükler, cache'ler.
     Dizin yapısı:
-        saved_models2/
+        models/
             random_forest2.joblib
             scaler_standard2.joblib
     """
