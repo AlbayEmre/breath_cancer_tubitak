@@ -104,7 +104,7 @@ def load_rf_model_and_scaler(model_dir: Path):
 
 # Çalışma dizini / model klasörü
 CWD = Path(os.getcwd())
-MODEL_DIR = CWD / "saved_models2"
+MODEL_DIR = CWD / "models"
 
 rf_model, scaler, load_info = load_rf_model_and_scaler(MODEL_DIR)
 

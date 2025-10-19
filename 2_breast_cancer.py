@@ -122,7 +122,7 @@ plt.show()
 # ==========================
 # Modelleri ve scaler'ı kaydet (çalışma dizinine)
 # ==========================
-model_dir = os.path.join(os.getcwd(), "saved_models2")
+model_dir = os.path.join(os.getcwd(), "models")
 os.makedirs(model_dir, exist_ok=True)
 
 # Modeller

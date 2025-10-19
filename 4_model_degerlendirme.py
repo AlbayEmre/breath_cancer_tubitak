@@ -35,7 +35,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # ==========================
 # Kaydedilmiş modeller ve scaler dizini
 # ==========================
-model_dir = os.path.join(os.getcwd(), "saved_models2")
+model_dir = os.path.join(os.getcwd(), "models")
 
 # Scaler'ı yükle ve veriyi ölçekle
 scaler = load(os.path.join(model_dir, "scaler_standard2.joblib"))
